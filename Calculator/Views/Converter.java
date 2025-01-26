@@ -16,22 +16,7 @@ public class Converter {
     private Scene convScene;
 
     public Converter(Stage stage) {
-        stage.close();
-        convStage = new Stage();
-        startScene();
+
     }
 
-    public void startScene() {
-
-        convScene = new Scene(getNumberButtons(), 350, 450);
-        convStage.setScene(convScene);
-        convStage.setTitle("Calculator");
-
-        convStage.show();
-    }
-
-    public GridPane getNumberButtons(){
-        buttonContainer = new GridPane();
-        return buttonContainer;
-    }
 }

@@ -1,5 +1,6 @@
 package Calculator.Views;
 
+import Calculator.Controllers.SimpleController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -60,7 +61,7 @@ public class OptionScreen {
         box.setOnMouseClicked(event ->{
             switch(index){
                 case "1":
-                new SimpleCalc(stage);
+                new SimpleController(stage);
                 break;
 
                 case "2":

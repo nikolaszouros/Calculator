@@ -17,6 +17,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+/*
+ * This controller is called from the Main
+ * It initializes a window based on the choise of the user
+ * Each window (simple,sci,conv), is costumized in each View file 
+ */
+
 public class OptionScreenController {
 
     @SuppressWarnings("unused")
@@ -47,10 +53,11 @@ public class OptionScreenController {
         container.setSpacing(50);
         container.setAlignment(Pos.CENTER);
         container.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        //container.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-border-radius: 5;");
+        // container.setStyle("-fx-border-color: red; -fx-border-width: 2;
+        // -fx-border-radius: 5;");
         container.getChildren().addAll(label);
 
-        box = OptionScreen.getOption("1", getSimpleCalcImage(), "Calculator",primaryStage);
+        box = OptionScreen.getOption("1", getSimpleCalcImage(), "Calculator", primaryStage);
         container.getChildren().addAll(box);
 
         box = OptionScreen.getOption("2", getScientificCalcImage(), "Scientific Calculator", primaryStage);
@@ -64,9 +71,10 @@ public class OptionScreenController {
 
     public static ImageView getSimpleCalcImage() {
         try {
-            image = new Image(new FileInputStream("C:/Users/zouro/Desktop/MyCode/Calculator/images/simple_calc.jpg"));
+            image = new Image(
+                    new FileInputStream("C:/Users/zouro/Desktop/MyCode/Calculator/Calculator/images/simple_calc.jpg"));
         } catch (FileNotFoundException e) {
-            System.out.println("Image not Found");
+            System.out.println("Image not Found: Simple");
         }
         return new ImageView(image);
     }
@@ -75,9 +83,9 @@ public class OptionScreenController {
         try {
             image = new Image(
                     new FileInputStream(
-                            "C:/Users/zouro/Desktop/MyCode/Calculator/images/scientific_calc-removebg-preview.png"));
+                            "C:/Users/zouro/Desktop/MyCode/Calculator/Calculator/images/scientific_calc-removebg-preview.png"));
         } catch (FileNotFoundException e) {
-            System.out.println("Image not Found");
+            System.out.println("Image not Found: Sci");
         }
         return new ImageView(image);
     }
@@ -85,9 +93,9 @@ public class OptionScreenController {
     public static ImageView getConverterImage() {
         try {
             image = new Image(new FileInputStream(
-                    "C:/Users/zouro/Desktop/MyCode/Calculator/images/converter-removebg-preview.png"));
+                    "C:/Users/zouro/Desktop/MyCode/Calculator/Calculator/images/converter-removebg-preview.png"));
         } catch (FileNotFoundException e) {
-            System.out.println("Image not Found");
+            System.out.println("Image not Found: Conv");
         }
         return new ImageView(image);
     }

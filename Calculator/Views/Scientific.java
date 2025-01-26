@@ -17,23 +17,8 @@ public class Scientific {
     private Scene sciScene;
 
     public Scientific(Stage stage){
-        stage.close();
-        sciStage = new Stage();
-        startScene();
+
     }
 
-    public void startScene(){
 
-        sciScene = new Scene(getNumberButtons(),350,450);
-        sciStage.setScene(sciScene);
-        sciStage.setTitle("Calculator");
-
-
-        sciStage.show();
-    }
-
-    public GridPane getNumberButtons() {
-        buttonContainer = new GridPane();
-        return buttonContainer;
-    }
 }
