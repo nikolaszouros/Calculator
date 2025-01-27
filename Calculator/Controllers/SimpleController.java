@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class SimpleController {
@@ -27,16 +28,17 @@ public class SimpleController {
     public void startScene(Stage calcStage) {
 
         vbox = new VBox();
+        vbox.setStyle("-fx-background-color : #003459");
         vbox.setMinSize(350, 450);
         vbox.setMaxSize(350, 450);
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
 
         hbox = SimpleCalc.getChoiceBoxAndTtitle(calcStage);
-        //hbox.setStyle("-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed;");
         vbox.getChildren().add(hbox);
 
         textfield = SimpleCalc.getResultField();
+        textfield.setStyle("-fx-background-color : #007ea7");
         vbox.getChildren().add(textfield);
 
         grid = SimpleCalc.getCircleButtons();
@@ -47,7 +49,6 @@ public class SimpleController {
         hbox.setSpacing(5);
         hbox.getChildren().add(grid);
         hbox.getChildren().add(SimpleCalc.getOvalButtons());
-        //hbox.setStyle("-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed;");
         vbox.getChildren().add(hbox);
 
         calcScene = new Scene(vbox, 350, 450);

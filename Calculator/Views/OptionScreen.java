@@ -21,6 +21,7 @@ public class OptionScreen {
     @SuppressWarnings("unused")
     public static HBox getOption(String index, ImageView imageView, String optionName, Stage stage) {
         HBox box = new HBox();
+        box.setStyle("-fx-background-color : #003459");
         box.setSpacing(5);
         box.setAlignment(Pos.CENTER);
 
@@ -30,7 +31,7 @@ public class OptionScreen {
         HBox.setHgrow(imageView, Priority.ALWAYS);
         Label i = new Label(index);
         i.setStyle("-fx-text-fill: black;");
-        i.setFont(new Font("Arial Rounded MT Bold", 20));
+        i.setFont(new Font("Arial Rounded MT Bold", 0));
         box.getChildren().add(i);
         box.getChildren().add(imageView);
 

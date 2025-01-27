@@ -68,6 +68,7 @@ public class OptionScreenController {
         container.getChildren().addAll(box);
 
         layout.getChildren().addAll(container);
+        layout.setStyle("-fx-background-color : #003459");
     }
 
     public static ImageView getSimpleCalcImage() {
