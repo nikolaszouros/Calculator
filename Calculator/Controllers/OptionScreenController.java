@@ -32,6 +32,7 @@ public class OptionScreenController {
     private static Image image;
     private HBox box;
     private VBox container;
+    //private OptionScreen optionscreen;
 
     public OptionScreenController(Stage primaryStage) {
         this.primaryStage = primaryStage;

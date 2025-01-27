@@ -1,5 +1,7 @@
 package Calculator.Views;
 
+import Calculator.Controllers.ConvController;
+import Calculator.Controllers.SciController;
 import Calculator.Controllers.SimpleController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -11,12 +13,8 @@ import javafx.stage.Stage;
 
 public class OptionScreen {
 
-    private ImageView imageView;
-    private String optionName;
-
     public OptionScreen(ImageView imageView, String optionName) {
-        this.imageView = imageView;
-        this.optionName = optionName;
+
     }
 
     // returns a box with the image and the description of the option
@@ -65,11 +63,13 @@ public class OptionScreen {
                 break;
 
                 case "2":
-                new Scientific(stage);
+                System.out.println("New Sci");
+                //new SciController(stage);
                 break;
 
                 case "3":
-                new Converter(stage);
+                System.out.println("New Conv");
+                //new ConvController(stage);
                 break;
             }
         });

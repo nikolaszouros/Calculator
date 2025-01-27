@@ -1,60 +1,54 @@
 package Calculator.Controllers;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
+import Calculator.Views.SimpleCalc;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class SimpleController {
 
     private HBox hbox;
     private VBox vbox;
-    private ImageView imageview;
-    private Image image;
     private Stage calcStage;
     private Scene calcScene;
+    private TextField textfield;
+    private static GridPane grid;
 
     public SimpleController(Stage stage) {
         stage.close();
         calcStage = new Stage();
-        startScene();
+        startScene(calcStage);
     }
 
-    public HBox getExitAndTtitle() {
-
-        hbox = new HBox();
-
-        try {
-            imageview = new ImageView(new Image(
-                    new FileInputStream("C:/Users/zouro/Desktop/MyCode/Calculator/Calculator/images/1808051-200.png")));
-        } catch (FileNotFoundException e) {
-            System.out.println("Image not Found: Exit");
-        }
-
-
-        hbox.getChildren().addAll(imageview);
-
-        Label title = new Label("Simple Calculator");
-        title.setStyle(null);
-        title.setStyle("-fx-text-fill: black;");
-        title.setFont(new Font("Arial Rounded MT Bold", 20));
-
-        return hbox;
-    }
-
-    public void startScene() {
+    public void startScene(Stage calcStage) {
 
         vbox = new VBox();
+        vbox.setMinSize(350, 450);
+        vbox.setMaxSize(350, 450);
+        vbox.setSpacing(10);
+        vbox.setAlignment(Pos.CENTER);
 
-        vbox.getChildren().add(getExitAndTtitle());
+        hbox = SimpleCalc.getChoiceBoxAndTtitle(calcStage);
+        //hbox.setStyle("-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed;");
+        vbox.getChildren().add(hbox);
 
+        textfield = SimpleCalc.getResultField();
+        vbox.getChildren().add(textfield);
+
+        grid = SimpleCalc.getCircleButtons();
+
+
+        hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setSpacing(5);
+        hbox.getChildren().add(grid);
+        hbox.getChildren().add(SimpleCalc.getOvalButtons());
+        //hbox.setStyle("-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed;");
+        vbox.getChildren().add(hbox);
 
         calcScene = new Scene(vbox, 350, 450);
         calcStage.setScene(calcScene);
