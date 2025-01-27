@@ -490,42 +490,13 @@ public class SimpleCalc extends SimpleController {
 
     }
 
-    @SuppressWarnings("unused")
-    public static HBox getChoiceBoxAndTtitle(Stage stage) {
-
-        hbox = new HBox();
-        hbox.setSpacing(10);
-        hbox.setAlignment(Pos.CENTER_LEFT);
-
-        ChoiceBox<String> choicebox = new ChoiceBox<String>();
-        choicebox.setStyle("-fx-background-color: lightblue;-fx-text-fill: darkblue;");
-        choicebox.getItems().addAll("Simple Clculator", "Scientific Calculator", "Converter");
-        choicebox.setValue("Pick a calculator");
-
-        choicebox.setOnAction(e -> {
-            String selected = choicebox.getValue();
-            switch (selected) {
-                case "Simple Clculator":
-                    break;
-
-                case "Scientific Calculator":
-                    System.out.println("Change to Sci");
-                    // new SciController(stage);
-                    break;
-
-                case "Converter":
-                    System.out.println("Change to Conv");
-                    // new ConvController(stage);
-                    break;
-
-            }
-        });
-
-        hbox.getChildren().add(choicebox);
+    public static HBox getTtitle(Stage stage) {
 
         Label title = new Label("Simple Calculator");
         title.setStyle("-fx-text-fill: black;");
         title.setFont(new Font("Arial Rounded MT Bold", 20));
+
+        hbox = new HBox();
         hbox.getChildren().add(title);
 
         hbox.setMaxWidth(344);

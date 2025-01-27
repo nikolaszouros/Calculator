@@ -33,13 +33,16 @@ public class SimpleController {
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
 
-        hbox = SimpleCalc.getChoiceBoxAndTtitle(calcStage);
+        hbox = new HBox();
+        hbox = SimpleCalc.getTtitle(calcStage);
         vbox.getChildren().add(hbox);
 
+        textfield = new TextField();
         textfield = SimpleCalc.getResultField();
         textfield.setStyle("-fx-background-color : #007ea7");
         vbox.getChildren().add(textfield);
 
+        grid = new GridPane();
         grid = SimpleCalc.getCircleButtons();
 
 
