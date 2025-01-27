@@ -8,12 +8,14 @@ A basic calculator application built in Java that supports fundamental arithmeti
 - Division
 
 ## Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/nikolaszouros/Calculator.git
+
 2. Navigate to the project directory:
     cd Calculator
-   
+
 3.Compile the Java files:
   javac Calculator.java
   
