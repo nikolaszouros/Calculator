@@ -15,7 +15,7 @@ public class SimpleController {
     private VBox vbox;
     private Stage calcStage;
     private Scene calcScene;
-    private TextField textfield;
+    protected TextField textfield;
     private static GridPane grid;
 
     public SimpleController(Stage stage) {

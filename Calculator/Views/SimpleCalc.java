@@ -1,5 +1,6 @@
 package Calculator.Views;
 
+import Calculator.Controllers.SimpleController;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -16,7 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class SimpleCalc {
+public class SimpleCalc extends SimpleController {
 
     private static TextField textfield;
     private static VBox vbox;
@@ -26,11 +27,14 @@ public class SimpleCalc {
     private static Rectangle rect;
     private static GridPane grid;
     private static StackPane pane;
+    private static String operator;
+    private static double n1 = 0, n2 = 0, result = 0;;
 
     public SimpleCalc() {
-
+        super(null);
     }
 
+    @SuppressWarnings("unused")
     public static GridPane getCircleButtons() {
 
         grid = new GridPane();
@@ -40,29 +44,76 @@ public class SimpleCalc {
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
         grid.add(circle, 0, 0);
-        label = new Label("(");
+        label = new Label("^");
         label.setFont(new Font(20));
         grid.add(label, 0, 0);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            if (textfield.getText().isEmpty()) {
+                textfield.setText("Error");
+            } else {
+                n1 = Double.parseDouble(textfield.getText());
+                textfield.setText("");
+                operator = "^";
+            }
+        });
+        label.setOnMouseClicked(e -> {
+            if (textfield.getText().isEmpty()) {
+                textfield.setText("Error");
+            } else {
+                n1 = Double.parseDouble(textfield.getText());
+                textfield.setText("");
+                operator = "^";
+            }
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
         grid.add(circle, 1, 0);
-        label = new Label(")");
+        label = new Label("-x");
         label.setFont(new Font(20));
         grid.add(label, 1, 0);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            if (textfield.getText().isEmpty()) {
+                textfield.setText("Error");
+            } else {
+                n1 = Double.parseDouble(textfield.getText());
+                double opn1 = (-n1);
+                textfield.setText(String.valueOf(opn1));
+                System.out.println(opn1);
+            }
+        });
+
+        label.setOnMouseClicked(e -> {
+            if (textfield.getText().isEmpty()) {
+                textfield.setText("Error");
+            } else {
+                n1 = Double.parseDouble(textfield.getText());
+                double opn1 = (-n1);
+                textfield.setText(String.valueOf(opn1));
+                System.out.println(opn1);
+            }
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
         grid.add(circle, 2, 0);
-        label = new Label("-x");
+        label = new Label("<");
         label.setFont(new Font(20));
         grid.add(label, 2, 0);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            String current = textfield.getText();
+            textfield.setText(current.substring(0, current.length() - 1));
+        });
+        label.setOnMouseClicked(e -> {
+            String current = textfield.getText();
+            textfield.setText(current.substring(0, current.length() - 1));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -70,8 +121,14 @@ public class SimpleCalc {
         label = new Label("7");
         label.setFont(new Font(20));
         grid.add(label, 0, 1);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("7"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("7"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -79,8 +136,14 @@ public class SimpleCalc {
         label = new Label("8");
         label.setFont(new Font(20));
         grid.add(label, 1, 1);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("8"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("8"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -88,8 +151,14 @@ public class SimpleCalc {
         label = new Label("9");
         label.setFont(new Font(20));
         grid.add(label, 2, 1);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("9"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("9"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -97,8 +166,14 @@ public class SimpleCalc {
         label = new Label("4");
         label.setFont(new Font(20));
         grid.add(label, 0, 2);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("4"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("4"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -106,8 +181,14 @@ public class SimpleCalc {
         label = new Label("5");
         label.setFont(new Font(20));
         grid.add(label, 1, 2);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("5"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("5"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -115,8 +196,14 @@ public class SimpleCalc {
         label = new Label("6");
         label.setFont(new Font(20));
         grid.add(label, 2, 2);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("6"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("6"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -124,8 +211,14 @@ public class SimpleCalc {
         label = new Label("1");
         label.setFont(new Font(20));
         grid.add(label, 0, 3);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("1"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("1"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -133,8 +226,14 @@ public class SimpleCalc {
         label = new Label("2");
         label.setFont(new Font(20));
         grid.add(label, 1, 3);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("2"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("2"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -142,8 +241,14 @@ public class SimpleCalc {
         label = new Label("3");
         label.setFont(new Font(20));
         grid.add(label, 2, 3);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("3"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("3"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -151,8 +256,14 @@ public class SimpleCalc {
         label = new Label(".");
         label.setFont(new Font(20));
         grid.add(label, 0, 4);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("."));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("."));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -160,8 +271,14 @@ public class SimpleCalc {
         label = new Label("0");
         label.setFont(new Font(20));
         grid.add(label, 1, 4);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("0"));
+        });
+        label.setOnMouseClicked(e -> {
+            textfield.setText(textfield.getText().concat("0"));
+        });
 
         circle = new Circle(27);
         circle.setFill(Color.web("#007ea7"));
@@ -170,12 +287,82 @@ public class SimpleCalc {
         label = new Label("=");
         label.setFont(new Font(20));
         grid.add(label, 2, 4);
-        GridPane.setHalignment(label, HPos.CENTER); 
-        GridPane.setValignment(label, VPos.CENTER); 
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        circle.setOnMouseClicked(e -> {
+            n2 = Double.parseDouble(textfield.getText());
+            System.out.println(n2 + "," + n1);
+            switch (operator) {
+                case "+":
+                    result = n1 + n2;
+                    textfield.setText(String.valueOf(result));
+                    break;
+
+                case "-":
+                    result = n1 - n2;
+                    textfield.setText(String.valueOf(result));
+                    break;
+
+                case "*":
+                    result = n1 * n2;
+                    break;
+
+                case "/":
+                    if (n2 == 0) {
+                        textfield.setText("Error");
+                    } else {
+                        result = n1 / n2;
+                        textfield.setText(String.valueOf(result));
+                    }
+                    break;
+
+                case "^":
+                    result = Math.pow(n1, n2);
+                    textfield.setText(String.valueOf(result));
+                    break;
+            }
+
+        });
+        label.setOnMouseClicked(e -> {
+            n2 = Double.parseDouble(textfield.getText());
+            System.out.println(n2 + "," + n1);
+            switch (operator) {
+                case "+":
+                    result = n1 + n2;
+                    textfield.setText(String.valueOf(result));
+                    break;
+
+                case "-":
+                    result = n1 - n2;
+                    textfield.setText(String.valueOf(result));
+                    break;
+
+                case "*":
+                    result = n1 * n2;
+                    textfield.setText(String.valueOf(result));
+                    break;
+
+                case "/":
+                    if (n2 == 0) {
+                        textfield.setText("Error");
+                    } else {
+                        result = n1 / n2;
+                        textfield.setText(String.valueOf(result));
+                    }
+                    break;
+
+                case "^":
+                    result = Math.pow(n1, n2);
+                    textfield.setText(String.valueOf(result));
+                    break;
+
+            }
+        });
 
         return grid;
     }
 
+    @SuppressWarnings("unused")
     public static VBox getOvalButtons() {
 
         vbox = new VBox();
@@ -185,65 +372,114 @@ public class SimpleCalc {
         rect = new Rectangle(120, 54);
         rect.setArcWidth(30);
         rect.setArcHeight(30);
+        rect.setOnMouseClicked(e -> {
+            textfield.setText("");
+            n1 = 0;
+            n2 = 0;
+            result = 0;
+            operator = "";
+        });
         pane.getChildren().add(rect);
         label = new Label("CLEAR");
         label.setFont(new Font(20));
+        label.setOnMouseClicked(e -> {
+            textfield.setText("");
+            n1 = 0;
+            n2 = 0;
+            result = 0;
+            operator = "";
+        });
         pane.getChildren().add(label);
         vbox.getChildren().add(pane);
-
 
         pane = new StackPane();
         rect = new Rectangle(120, 54);
         rect.setArcWidth(30);
         rect.setArcHeight(30);
+        rect.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "+";
+            textfield.setText("");
+        });
         pane.getChildren().add(rect);
         label = new Label("+");
         label.setFont(new Font(30));
+        label.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "+";
+            textfield.setText("");
+        });
         pane.getChildren().add(label);
         vbox.getChildren().add(pane);
-
 
         pane = new StackPane();
         rect = new Rectangle(120, 54);
         rect.setArcWidth(30);
         rect.setArcHeight(30);
+        rect.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText()) - n1;
+            operator = "-";
+            textfield.setText("");
+        });
         pane.getChildren().add(rect);
         label = new Label("-");
         label.setFont(new Font(30));
+        label.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "-";
+            textfield.setText("");
+        });
         pane.getChildren().add(label);
         vbox.getChildren().add(pane);
-
 
         pane = new StackPane();
         rect = new Rectangle(120, 54);
         rect.setArcWidth(30);
         rect.setArcHeight(30);
+        rect.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "*";
+            textfield.setText("");
+        });
         pane.getChildren().add(rect);
         label = new Label("x");
         label.setFont(new Font(30));
+        label.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "*";
+            textfield.setText("");
+        });
         pane.getChildren().add(label);
         vbox.getChildren().add(pane);
-
 
         pane = new StackPane();
         rect = new Rectangle(120, 54);
         rect.setArcWidth(27);
         rect.setArcHeight(27);
+        rect.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "/";
+            textfield.setText("");
+        });
         pane.getChildren().add(rect);
         label = new Label("/");
         label.setFont(new Font(30));
+        label.setOnMouseClicked(e -> {
+            n1 = Double.parseDouble(textfield.getText());
+            operator = "/";
+            textfield.setText("");
+        });
         pane.getChildren().add(label);
         vbox.getChildren().add(pane);
-
 
         return vbox;
     }
 
-    //TODO add TextFormatter
+    // TODO add TextFormatter
     public static TextField getResultField() {
 
         textfield = new TextField();
-        textfield.setEditable(true);
+        textfield.setEditable(false);
         textfield.setAlignment(Pos.BOTTOM_RIGHT);
         textfield.setFont(new Font("Digital-7", 40));
         textfield.setMinSize(327, 100);
